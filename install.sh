@@ -113,8 +113,8 @@ setup_and_download ()
       useradd --system minio-user --shell /sbin/nologin || die "error creating user"
   fi
 
-  [[ "${INSTALL_PATH}" == */ ]] && STR="${INSTALL_PATH: : -1}"
-  [[ "${DATA_PATH}" == */ ]] && STR="${DATA_PATH: : -1}"
+  [[ "${INSTALL_PATH}" == */ ]] && INSTALL_PATH="${INSTALL_PATH: : -1}"
+  [[ "${DATA_PATH}" == */ ]] && DATA_PATH="${DATA_PATH: : -1}"
 
   #Check if the folder $INSTALL_PATH exist
   if [ ! -d $INSTALL_PATH ]; then
