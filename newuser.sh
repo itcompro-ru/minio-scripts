@@ -4,6 +4,7 @@
 # Creates a new bucket and a new user
 # User will have access to the new bucket only
 # MinIO client (mc) is required https://github.com/minio/mc
+# mc config host add <ALIAS> <YOUR-S3-ENDPOINT> <YOUR-ACCESS-KEY> <YOUR-SECRET-KEY> <API-SIGNATURE> 
 ###
 
 die()
@@ -35,7 +36,7 @@ if [[ -z $SERVER ]]; then
   exit
 fi
 
-if [[ $(mc admin user list minio --json | grep $USER | wc -l) != "0" ]]; then
+if [[ $(mc admin user list $SERVER --json | grep $USER | wc -l) != "0" ]]; then
   die "error, user or poilicy allready exists"
 fi
 
